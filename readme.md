@@ -1,7 +1,7 @@
 Minimal Arduino Web Api
 ======
 
-This is a extremely simple Arduino Web Api implementation. Currently it only allow to control input pins.
+This is a extremely simple Arduino Web Api implementation. Currently it only allows to control input pins.
 It's released under the MIT license.
 
 Based on [Webduino library](https://github.com/sirleech/Webduino)
