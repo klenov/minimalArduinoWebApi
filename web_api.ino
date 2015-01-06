@@ -1,7 +1,7 @@
 /* Minimal Arduino Web Api
    Based on Webduino library https://github.com/sirleech/Webduino
 
-   I'm using this script with Arduino Mega 2560 connected with Ethernet Shield on W5100 chip.
+   I'm using a variation of this script with Arduino Mega 2560 connected with Ethernet Shield on W5100 chip.
 
    Vasily Klenov, 2014
 */
@@ -31,8 +31,8 @@ WebServer webserver(PREFIX, 80);
 #define PIN_OFF 1
 
 // digital pins 10, 11, 12, and 13 on the Uno and pins 50, 51, and 52 on the Mega occupied by Ethernet Shield
-const int  input_pins[] = {      40,      42,      43,      44,      45,      46,      47 };
-int input_pins_states[] = { PIN_OFF, PIN_OFF, PIN_OFF, PIN_OFF, PIN_OFF, PIN_OFF, PIN_OFF };
+const int  output_pins[] = {      40,      42,      43,      44,      45,      46,      47 };
+int output_pins_states[] = { PIN_OFF, PIN_OFF, PIN_OFF, PIN_OFF, PIN_OFF, PIN_OFF, PIN_OFF };
 
 char* pin_number_as_char = "XX";
 
@@ -103,10 +103,10 @@ void pinsCmd(WebServer &server, WebServer::ConnectionType type, char **url_path,
         new_state = PIN_ON;
       }
 
-      if ( input_pins_states[PIN_index] != new_state )
+      if ( output_pins_states[PIN_index] != new_state )
       {
-        digitalWrite(input_pins[PIN_index], new_state);
-        input_pins_states[PIN_index] = new_state;
+        digitalWrite(output_pins[PIN_index], new_state);
+        output_pins_states[PIN_index] = new_state;
       }
 
       return;
@@ -127,7 +127,7 @@ void pinsCmd(WebServer &server, WebServer::ConnectionType type, char **url_path,
     if ( PIN_index >= 0 )
     {
       server.httpSuccess();
-      if( input_pins_states[PIN_index] == PIN_OFF)
+      if( output_pins_states[PIN_index] == PIN_OFF)
         server.printP( Off );
       else
         server.printP( On );
@@ -144,9 +144,9 @@ void pinsCmd(WebServer &server, WebServer::ConnectionType type, char **url_path,
 
 void setup()
 { 
-  for (int i=0; i<SIZE(input_pins); i++) {
-    digitalWrite(input_pins[i], PIN_OFF);
-    pinMode(input_pins[i], OUTPUT);
+  for (int i=0; i<SIZE(output_pins); i++) {
+    digitalWrite(output_pins[i], PIN_OFF);
+    pinMode(output_pins[i], OUTPUT);
   }
 
   delay( 250 ); // avoid manual reset of ethernet shield after power up http://www.freetronics.com.au/pages/usb-power-and-reset
@@ -178,9 +178,9 @@ void loop()
 
 int find_index(char *value)
 {
-   for (int i=0; i<SIZE(input_pins); i++)
+   for (int i=0; i<SIZE(output_pins); i++)
    {
-     pin_number_as_char = itoa(input_pins[i], pin_number_as_char, 10); // itoa reference http://www.nongnu.org/avr-libc/user-manual/group__avr__stdlib.html#gaa571de9e773dde59b0550a5ca4bd2f00
+     pin_number_as_char = itoa(output_pins[i], pin_number_as_char, 10); // itoa reference http://www.nongnu.org/avr-libc/user-manual/group__avr__stdlib.html#gaa571de9e773dde59b0550a5ca4bd2f00
      if (strcmp(pin_number_as_char, value) == 0)
      {
         return(i); 
