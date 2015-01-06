@@ -1,7 +1,6 @@
 Minimal Arduino Web Api
 ======
 
-<<<<<<< HEAD
 This is a extremely simple Arduino Web Api implementation. Currently it only allows to control output pins.
 It's released under the MIT license.
 
