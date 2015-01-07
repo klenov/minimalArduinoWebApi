@@ -23,3 +23,12 @@ Pins listed in array input_pins[] will be configured as output pins and each pin
   PUT http://YOUR_ARDUINO_IP_ADDRESS/pins/2/ON
   will change pin 2 state to ON
 ```
+
+I'm using this sketch with relay boards and setting a pin LOW turns them ON. That's why there is an inversion:
+```
+  #define PIN_ON  0
+  #define PIN_OFF 1
+```  
+
+## Alternatives
+If you need something more feature-rich have a look at [aREST](https://github.com/marcoschwartz/aREST)
