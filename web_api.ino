@@ -47,7 +47,7 @@ P(Hello) =
     "<body>"
     "<h1>Minimal Arduino Web Api</h1>"
     "based on <a href=\"https://github.com/sirleech/Webduino\">Webduino library</a><br/>"
-    "<b>version:</b>"
+    "<b>version: </b>"
     VERSION_STRING
     "</body></html>";
 
