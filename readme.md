@@ -1,7 +1,7 @@
-Minimal Arduino Web Api
+Minimal Arduino Web API
 ======
 
-This is a extremely simple Arduino Web Api implementation. Currently it only allows to control output pins.
+This is a extremely simple Arduino Web API implementation. Currently it only allows to control output pins.
 It's released under the MIT license.
 
 Based on [Webduino library](https://github.com/sirleech/Webduino)
