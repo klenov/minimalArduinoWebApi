@@ -1,4 +1,4 @@
-/* Minimal Arduino Web Api
+/* Minimal Arduino Web API
    Based on Webduino library https://github.com/sirleech/Webduino
 
    I'm using a variation of this script with Arduino Mega 2560 connected with Ethernet Shield on W5100 chip.
@@ -24,7 +24,7 @@ static uint8_t mac[] = { 0xA9, 0x10, 0x14, 0xE7, 0xAC, 0xCC };
 const IPAddress ip(192, 168, 2, 15);
 
 
-#define PREFIX ""
+#define PREFIX "" // URL prefix
 WebServer webserver(PREFIX, 80);
 
 #define PIN_ON  0
@@ -47,7 +47,7 @@ P(Hello) =
     "<body>"
     "<h1>Minimal Arduino Web Api</h1>"
     "based on <a href=\"https://github.com/sirleech/Webduino\">Webduino library</a><br/>"
-    "<b>version:</b>"
+    "<b>version: </b>"
     VERSION_STRING
     "</body></html>";
 
