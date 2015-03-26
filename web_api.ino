@@ -88,7 +88,7 @@ void pinsCmd(WebServer &server, WebServer::ConnectionType type, char **url_path,
 
   if (type == WebServer::PUT)
   {
-    #ifdef DEBUG_WEB_API
+    #if DEBUG_WEB_API
       Serial.println("Processing PUT query...");
     #endif
 
@@ -119,7 +119,7 @@ void pinsCmd(WebServer &server, WebServer::ConnectionType type, char **url_path,
 
   if (type == WebServer::GET)
   { 
-    #ifdef DEBUG_SWITCHER
+    #if DEBUG_SWITCHER
       Serial.println("Processing GET query...");
     #endif
     int PIN_index = find_index(pin_param);
@@ -151,14 +151,14 @@ void setup()
 
   delay( 250 ); // avoid manual reset of ethernet shield after power up http://www.freetronics.com.au/pages/usb-power-and-reset
 
-  #ifdef DEBUG_WEB_API
+  #if DEBUG_WEB_API
     Serial.begin(9600);
     Serial.println("Connecting to network ...");
   #endif
 
   // setup the Ehternet library
   Ethernet.begin(mac, ip);
-  #ifdef DEBUG_WEB_API
+  #if DEBUG_WEB_API
     Serial.println("OK!");
     Serial.println(Ethernet.localIP());
   #endif
